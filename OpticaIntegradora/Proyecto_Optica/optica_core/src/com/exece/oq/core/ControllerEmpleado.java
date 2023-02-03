@@ -5,6 +5,7 @@ import com.exece.oq.model.Empleado;
 import com.exece.oq.model.Persona;
 import com.exece.oq.model.Usuario;
 import com.google.gson.Gson;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
@@ -42,17 +43,16 @@ public class ControllerEmpleado {
         //Con este objeto nos vamos a conectar a la Base de Datos:
         ConexionMySQL connMySQL = new ConexionMySQL();
 
+        Connection conn = connMySQL.open();
+
         //Creamos un objeto de tipo empleado
         Empleado em = new Empleado();
-
+        
         //Creamos una variable que almacenara el json de respuesta
         String jsonInfo = "";
 
         //Preparamos la sentencia SQL
         String sql = "SELECT * FROM v_empleados where nombreUsuario = ? and contrasenia = ?";
-
-        //Abrimos la conexión con la Base de Datos:
-        Connection conn = connMySQL.open();
 
         //Con este objeto ejecutaremos la consulta:
         PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -70,14 +70,11 @@ public class ControllerEmpleado {
         if (res.next()) {
 
             em = fill(res);
-
             jsonInfo = new Gson().toJson(em);
-
-        } else {
-
-            jsonInfo = isBadUser(user);
-
-        }
+            em.getUsuario().createLastToken();
+            guardarToken(em);
+            
+        } 
 
         //Liberamos los recursos que estaban consumiendo la conexion (a pesar de ser automaticamente liberados)
         pstmt.close();
@@ -336,40 +333,63 @@ public class ControllerEmpleado {
 
         return e;
     }
-
-    public String isBadUser(String user) throws Exception {
-
-        //Con este objeto nos vamos a conectar a la Base de Datos:
+    
+    public void guardarToken(Empleado e)throws Exception{
+        String query = "UPDATE usuario SET lastToken = ?, dateLastToken=NOW() WHERE idUsuario = ?";
+        
+        ConexionMySQL conexionMySQL = new ConexionMySQL();
+        
+        Connection connection = conexionMySQL.open();
+        
+        PreparedStatement preparedStatement = connection.prepareCall(query);
+        
+        preparedStatement.setString(1, e.getUsuario().getLastToken());
+        preparedStatement.setInt(2, e.getUsuario().getIdUsuario());
+        
+        preparedStatement.execute();
+        
+        preparedStatement.close();
+        connection.close();
+        conexionMySQL.close();
+    }
+    
+    public boolean eliminarToken(Empleado e)throws Exception{
+        boolean r = false;
+        String query = "UPDATE usuario SET lastToken='' WHERE idUsuario = ?";
+        
+        ConexionMySQL conexionMySQL = new ConexionMySQL();
+        
+        Connection connection = conexionMySQL.open();
+        
+        PreparedStatement preparedStatement = connection.prepareCall(query);
+        
+        preparedStatement.setInt(1, e.getUsuario().getIdUsuario());
+        
+        preparedStatement.execute();
+        r=true;
+        
+        preparedStatement.close();
+        connection.close();
+        conexionMySQL.close();
+        
+        return r;   
+    }
+    
+    public boolean validarToken(String t) throws Exception{
+        boolean r = false;
+        String query = "SELECT * FROM v_empleados WHERE lastToken='"+t+"'";
+        
         ConexionMySQL con = new ConexionMySQL();
-
-        //Abrimos la conexión con la Base de Datos:
-        Connection conn = con.open();
-
-        //Preparamos una consulta SQL para saber si esta mal la contraseña o el nombre de usuario
-        String sql = "select * from usuario where nombre = ?";
-
-        //Con este objeto ejecutaremos la consulta:
-        PreparedStatement stmt = conn.prepareStatement(sql);
-
-        //Aqui agrfamos el nombre de usuario que llega por parametro
-        stmt.setString(1, user);
-
-        //Aquí guardaremos los resultados de la consulta:
-        //Utilizaremos un ResultSet porque nuestra consulta es un select
-        ResultSet res = stmt.executeQuery();
-
-        //Si el res.next tiende a false entonces sabremos que el nombre de usuario esta mal
-        //Si el res.next tiende a true entonces sabremos que la contrseña esta mal
-        if (res.next()) {
-
-            return """
-                   {"message": "your password is failed"}
-                   """;
-        } else {
-            return """
-                   {"message": "your username is failed"}
-                   """;
-        }
-
+        Connection cone = con.open();
+        Statement stmt = cone.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        
+        if(rs.next()) r = true;
+        
+        stmt.close();
+        cone.close();
+        con.close();
+        
+        return r;
     }
 }

@@ -4,26 +4,32 @@
  */
 package com.exece.oq.model;
 
+import java.util.Date;
+import org.apache.commons.codec.digest.DigestUtils;
+
 /**
  *
  * @author LiveGrios
  */
 public class Usuario
 {
+
     int idUsuario;
     String nombre;
     String contrasenia;
-    String rol;    
+    String rol;
     String lastToken;
     String dateLastToken;
 
-    public Usuario(){}
-    
+    public Usuario()
+    {
+    }
+
     public Usuario(int idUsuario)
     {
         this.idUsuario = idUsuario;
     }
-    
+
     public int getIdUsuario()
     {
         return idUsuario;
@@ -82,5 +88,14 @@ public class Usuario
     public void setDateLastToken(String dateLastToken)
     {
         this.dateLastToken = dateLastToken;
+    }
+
+    public void createLastToken()
+    {
+        String u = this.getNombre();
+        String p = this.getContrasenia();
+        String k = new Date().toString();
+        String x = (DigestUtils.sha256Hex(u + ";" + p + ";" + k));
+        this.lastToken = x;
     }
 }

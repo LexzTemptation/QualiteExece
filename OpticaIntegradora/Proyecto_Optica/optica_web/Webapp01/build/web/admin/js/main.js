@@ -164,4 +164,34 @@ function cargarModulo(modulo)
     }
 }
 
+function logout()
+{
+    let empleado = w.localStorage.getItem("usuario")
+    
+    let usuario = new Object()
+    
+    usuario = JSON.parse(empleado)
+    
+    let datos = {empleado: JSON.stringify(usuario)}
+    
+    let params = new URLSearchParams(datos)
+    
+    fetch("../servicio/empleado/out" , 
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: params
+    })
+            .then(data =>{
+                if (data.ok){
+                    w.location.replace("../")
+                    w.localStorage.removeItem("usuario")
+                    w.localStorage.removeItem("isLogin")
+                    w.localStorage.removeItem("empleado");
+                }
+    })
+}
+
 

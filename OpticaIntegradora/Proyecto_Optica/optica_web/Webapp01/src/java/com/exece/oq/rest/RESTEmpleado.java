@@ -169,29 +169,41 @@ public class RESTEmpleado {
         return Response.status(Response.Status.OK).entity(out).build();
     }
     
-    @GET
-    @Path("saludarPersonal")
+    @POST
+    @Path("out")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response saludarPersonal(@QueryParam("nombre") String nombre){
+    public Response logOut(@FormParam("empleado") @DefaultValue("") String e)throws Exception{
+        String out =  null;
+        Empleado empleado = null;
+        ControllerEmpleado ce = null;
+        Gson gson = new Gson();
         
-        String out = """
-                     {"result": "Hola %s"}
-                     """;
-        
-        out = String.format(out, nombre);
-        
-        return Response.status(Response.Status.OK).entity(out).build();
-    }
-    
-    @GET
-    @Path("saludarPersonal2")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response saludarPersonal(){
-        
-        String out = """
-                     {"result": "Hola, come nepe"}
-                     """;
-        
+        try{
+            empleado = gson.fromJson(e, Empleado.class);
+            ce = new ControllerEmpleado();
+            if (ce.eliminarToken(empleado)){
+                out = """
+                      {"ok":"Eliminación de token correcta"}
+                      """;
+            }
+            else{
+                out = """
+                {"error":"Eliminación de token no realizada"}
+                """;
+            }
+        }
+        catch(JsonParseException jpe){
+            out="""
+                {"error":"formato de datos no valido"}
+                """;
+            jpe.printStackTrace();
+        }
+        catch(Exception ex){
+            out = """
+                  {"error":""Acceso no concedido}
+                  """;
+            ex.printStackTrace();
+        }
         return Response.status(Response.Status.OK).entity(out).build();
     }
 }

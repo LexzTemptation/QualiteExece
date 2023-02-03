@@ -12,9 +12,9 @@ public class ConexionMySQL {
     
     public Connection open() throws ClassNotFoundException, SQLException{
         
-        String user = "root";
-        String password = "root";
-        String url = "jdbc:mysql://127.0.0.1:3306/optiqalumnos?" + 
+        String user = "exece";
+        String password = "";
+        String url = "jdbc:mysql://localhost:3306/optiqalumnos?" + 
                      "useSSL=false&" +
                      "allowPublicKeyRetrieveal=true&" +
                      "useUnicode=true&"  +
