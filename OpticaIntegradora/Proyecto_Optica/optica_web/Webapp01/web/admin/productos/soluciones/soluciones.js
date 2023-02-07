@@ -69,7 +69,7 @@ export function insertar(e) {
     let datos = {datosSolucion: JSON.stringify(solucion)}
 
     let params = new URLSearchParams(datos)
-
+    
     fetch(url, {
         method: "POST",
         headers: {
@@ -99,6 +99,7 @@ export function insertar(e) {
                 e.target.reset()
             })
             .catch(err => console.log(err))
+    limpiar();
 }
 
 export function enviarModificaciones(e, idProducto, idSolucion) {
@@ -281,6 +282,43 @@ export function setDetalleVisible(valor)
     }
 }
 
+function sanitization(text)
+{
+    text = text.replace("(","");
+    text = text.replace(")","");
+    text = text.replace(":","");
+    text = text.replace("\"","");
+    text = text.replace("-","");
+    text = text.replace("*","");
+    text = text.replace("%","");
+    text = text.replace("<<","");
+    text = text.replace(">>","");
+    text = text.replace("", "");
+    text = text.replace("","");
+}
 
+function normalizar(text){
+    text = text.toUpperCase();
+    text = text.replaceAll("Á", "A");
+    text = text.replaceAll("É", "E");
+    text = text.replaceAll("Í", "I");
+    text = text.replaceAll("Ó", "O");
+    text = text.replaceAll("Ú", "U");
+    return text;
+}
 
+function formatText(text){
+    return sanitization(normalizar(text));
+}
+
+function limpiar()
+{
+    let text1 = e.getElementById("nombre").value;
+    text1 = normalizar(text1);
+    text1 = sanitization(text1);
+    
+    let text2 = e.getElementById("marca").value;
+    text2 = normalizar(text2);
+    text2 = sanitization(text2);
+}
 

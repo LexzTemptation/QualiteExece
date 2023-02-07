@@ -284,3 +284,21 @@ export function setDetalleVisible(valor)
         d.getElementById("lentesC-ventana").style.display = ""
     }
 }
+
+function sanitization(text){
+    return text.replaceAll(/[()`\\";._-]/ig, "");
+}
+
+function normalizar(text){
+    text = text.toUpperCase();
+    text = text.replaceAll("Á", "A");
+    text = text.replaceAll("É", "E");
+    text = text.replaceAll("Í", "I");
+    text = text.replaceAll("Ó", "O");
+    text = text.replaceAll("Ú", "U");
+    return text;
+}
+
+function formatText(text){
+    return sanitization(normalizar(text));
+}
