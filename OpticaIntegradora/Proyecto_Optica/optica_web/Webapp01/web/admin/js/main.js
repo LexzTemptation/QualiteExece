@@ -74,6 +74,21 @@ function cargarModulo(modulo)
 
                     })
             break;
+            
+        case "ventas":
+            fetch("ventas/ventas.html")
+                    .then(response => {
+                        return response.text()
+                    })
+                    .then(function (html) {
+                        d.getElementById("root").innerHTML = html
+                        import("../ventas/ventas.js")
+                                .then(obj => {
+                                    ve = obj
+                                    ve.inicializar("menu")
+                                })
+                    })
+            break;
 
         case "empleados":
             fetch("empleados/empleados.html")
