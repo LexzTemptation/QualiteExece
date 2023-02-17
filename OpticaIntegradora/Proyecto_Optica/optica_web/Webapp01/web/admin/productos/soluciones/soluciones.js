@@ -99,7 +99,7 @@ export function insertar(e) {
                 e.target.reset()
             })
             .catch(err => console.log(err))
-    limpiar();
+    limpiar(e);
 }
 
 export function enviarModificaciones(e, idProducto, idSolucion) {
@@ -313,11 +313,12 @@ function formatText(text){
 
 function limpiar()
 {
-    let text1 = e.getElementById("nombre").value;
+    let text1 = d.getElementById("nombre").value;
     text1 = normalizar(text1);
     text1 = sanitization(text1);
+    d.getElementById("nombre").value = " ";
     
-    let text2 = e.getElementById("marca").value;
+    let text2 = d.getElementById("marca").value;
     text2 = normalizar(text2);
     text2 = sanitization(text2);
 }
