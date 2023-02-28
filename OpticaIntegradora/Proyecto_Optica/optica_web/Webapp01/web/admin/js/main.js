@@ -5,6 +5,7 @@ let ac = null
 let az = null
 let sl = null
 let lc = null
+let ve = null
 
 let d = document
 
