@@ -4,15 +4,15 @@ package com.exece.oq.model;
 public class Venta
 {
     private int idVenta;
-    private int idEmpleado;
+    private Empleado empleado;
     String clave;
 
     public Venta(){}
 
-    public Venta(int idVenta, int idEmpleado, String clave)
+    public Venta(int idVenta, Empleado empleado, String clave)
     {
         this.idVenta = idVenta;
-        this.idEmpleado = idEmpleado;
+        this.empleado = empleado;
         this.clave = clave;
     }
 
@@ -26,14 +26,14 @@ public class Venta
         this.idVenta = idVenta;
     }
 
-    public int getIdEmpleado()
+    public Empleado getEmpleado()
     {
-        return idEmpleado;
+        return empleado;
     }
 
-    public void setIdEmpleado(int idEmpleado)
+    public void setEmpleado(Empleado idEmpleado)
     {
-        this.idEmpleado = idEmpleado;
+        this.empleado = empleado;
     }
 
     public String getClave()
