@@ -1,153 +1,46 @@
-<!-- MENU -->
-
-<div class="container-image vw-100 vh-100" id="menu-accesorios">
-
+<div class="container-image vw-100 vh-100" id="menu-ventas">
     <div class="container-menu w-100 h-100" style="background-color: rgba(0, 0, 0, 0.454); z-index: 1">
-
-        <div class="w-75 d-flex justify-content-round align-items-center position-relative z-index-1" style="top: 29%; left: 12%;">
-
-            <div class="d-flex flex-column align-items-center" style="width: 50%;">
-
-                <img src="../media/img/file-plusWhite.svg" alt="" class="w-50">
-                <p class="text-light mt-3 card bg-info p-2 fw-bolder" onclick="ve.inicializar('insertar')">
-                    Insertar Ventas
-                </p>
-            </div>
-            <div class="d-flex flex-column align-items-center" style="width: 50%;">
-
-                <img src="../media/img/editWhite.svg" alt="" class="w-50">
-                <p class="text-light mt-3 card bg-info p-2 fw-bolder" onclick="ve.inicializar('tables')">
-                    Listado de Ventas
-                </p>
-
+        <div class="d-flex justify-content-round position-absolute z-index-1" style="top: 15%; left: 12%;">
+            <div class="row">
+                <div class="d-flex flex-column align-items-center col-5">
+                    <button onClick="vm.realizarVenta()" class="btn btn-success">Realizar compra</button>
+                    <table class="table " id="tblRealVenta">
+                        <thead style="background-color: #5ba0f8; color: white">
+                                <th>codigo de barras</th>
+                                <th>nombre</th>
+                                <th>precio venta</th>
+                                <th>Cantidad</th>
+                                <th>Descuento %</th>
+                                <th>Total<br><label id="lblTotal">0</label></th>
+                        </thead>
+                        <tbody id="tbodyRealVenta" class="bg-light">
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex flex-column align-items-center col-5">
+                    <input id="txtBuscarProd" class="m-5 search" name="name" placeholder="Buscar"/>
+                    <table class="table position-relative"  id="tblVentas">
+                        <thead style="background-color: #5ba0f8; color: white">
+                            <tr>
+                                <th>id</th>
+                                <th>codigo de barras</th>
+                                <th>nombre</th>
+                                <th>marca</th>
+                                <th>precio venta</th>
+                                <th>existencias</th>
+                                <th>estatus</th>
+                                <th>    </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-light" id="tbodyVentas">
+                            
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
     </div>
-
-</div>
-
-<!<!-- iNSERTAR -->
-
-
-<div style="display: none" id="form-accesorios">
-    <div class="position-absolute" style="right: 20px; top: 20px;">
-        <img src="../media/img/home.svg" style="cursor: pointer" onclick="ac.inicializar('menu')"/>
-    </div>
-    <div class="d-flex d-row justify-content-center align-items-center position-relative" style="top: 20; left: 25%; width: 700px; height: 200px">
-        <img src="../media/icons/tejido.png" alt="insert image" width="100">
-        <div class="d-flex flex-column align-items-center justify-content-center">
-            <h2 class="position-absolute fw-light" style="top: 30px; color:#4d838d; right: 37%">Insertar</h2>
-            <p class="fw-normal" style="font-size: 80px; color: #4d838d;">Accesorios</p>
-        </div>
-    </div>
-    <div class="vw-100 d-flex flex-row align-items-center justify-content-around position-relative top-50" style="z-index: 2">
-        <div class="" style="width: 500px">
-
-            <div class="mb-5 mt-4">
-                <input id="txtNombre" placeholder="Nombre:" type="text" class="form-control fw-bold input-insert">
-            </div>
-            <div class="mb-5 mt-4">
-                <input id="txtMarca" placeholder="Marca:" type="text" class="form-control fw-bold input-insert">
-            </div>
-            <div class="mb-5 mt-4">
-                <input id="txtExistencias" placeholder="Existencias:" type="text" class="form-control fw-bold input-insert">
-            </div>
-        </div>
-
-        <div class="" style="width: 500px">
-            <div class="mb-5">
-                <input id="txtPrecioVenta" placeholder="Precio de venta:" type="text" class="form-control fw-bold input-insert">
-            </div>
-            <div class="mb-5">
-                <input id="txtPrecioCompra" placeholder="Precio de compra:" type="text" class="form-control fw-bold input-insert">
-            </div>
-        </div>
-        <input class="btn btn-success position-absolute bottom-0 position-absolute " type="button" value="Guardar" onclick="ac.insertar()"/>
-    </div>
-    <svg xmlns="http://www.w4.org/2000/svg" viewBox="0 0 1440 420" class="position-absolute" style="bottom: -160px; left: -2%">
-    <path fill="#0099ff" fill-opacity="1"
-          d="M0,42L80,74.7C160,117,420,204,480,224C640,245,800,204,960,181.4C1120,160,1280,160,1460,160L1440,160L1440,420L1460,420C1280,420,1120,420,960,420C800,420,640,420,480,420C420,420,160,420,80,420L0,420Z">
-    </path>
-    </svg>
-    <style>
-        input[type="text"]{
-            height: 50px;
-        }
-
-        .input-insert{
-            border: none;
-            border-bottom: 2px solid rgb(31, 203, 242);
-        }
-
-        input[type="radio"]{
-            margin-left: 70px;
-        }
-    </style>
-</div>
-
-<!<!-- TABLAS -->
-
-<div style="display: none" id="tablas-accesorios">
-    <div style="display: none" class="d-flex justify-content-center align-items-center position-relative mt-2">   
-        <div class="position-absolute" style="right: 20px; top: 20px;">
-            <img src="../media/img/home.svg" style="cursor: pointer" onclick="ac.inicializar('menu')"/>
-        </div>
-        <img src="../media/icons/tejido.png" alt="insert image" width="100">
-        <div class="title d-flex flex-column justify-content-center align-items-center">
-            <h2 class="position-relative fw-light" style="top: 30px; left: 1px; color:#4d838d;">Listado</h2> 
-            <p class="fw-normal" style="font-size: 80px; color:#4d838d;">Accesorios</p>
-        </div>
-    </div>
-    <div class="table mt-5">
-
-        <input id="txtSearch" class="m-5 search" name="name" placeholder="Buscar"/>
-
-        <table class="table position-relative" style="width: 90vw; left: 70px;" id="tblAccesorios">
-            <thead style="background-color: #5ba0f8; color: white">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Marca</th>
-                    <th>Código de barras</th>
-                    <th>Precio de Venta</th>
-                    <th>Precio de compra</th>
-                    <th>Existencias</th>
-                    <th>Estatus</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="tbodyAccesorios">
-
-
-            </tbody>
-        </table>
-
-        <style>
-
-            .search{
-                position: absolute;
-                top: 20%;
-                left: 30%;
-                outline: none;
-                border: none;
-                border-bottom: 2px solid rgb(31, 203, 242);
-                width: 34%;
-            }
-
-        </style>
-
-    </div>
-
-</div>
-
-<!<!-- Ventana Modal -->
-<div class="vw-100 vh-100 position-absolute top-0 start-0" id="accesorios-ventana" style="background: rgba(0, 0, 0, 0.49); display: none">
-    <div class="card w-50 position-absolute" style="top: 54px; left: 25%" >
-
-        <div class="card-body" id="inputs-accesorios">
-
-        </div>
-
-    </div>  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </div>

@@ -5,6 +5,8 @@ let ac = null
 let az = null
 let sl = null
 let lc = null
+let ve = null
+let vm = null;
 
 let d = document
 
@@ -54,6 +56,7 @@ for (let i = 0; i < navItem.length; i++) {
     navItem[i].classList.add("text-light")
 }
 
+
 function cargarModulo(modulo)
 {
 
@@ -72,21 +75,6 @@ function cargarModulo(modulo)
                                     cm.inicializar("menu")
                                 })
 
-                    })
-            break;
-            
-        case "ventas":
-            fetch("ventas/ventas.html")
-                    .then(response => {
-                        return response.text()
-                    })
-                    .then(function (html) {
-                        d.getElementById("root").innerHTML = html
-                        import("../ventas/ventas.js")
-                                .then(obj => {
-                                    ve = obj
-                                    ve.inicializar("menu")
-                                })
                     })
             break;
 
@@ -175,38 +163,51 @@ function cargarModulo(modulo)
 
             break;
 
+            case "ventas":
+            fetch("ventas/ventas.html")
+                    .then(response => {
+                        return response.text();
+                    })
+                    .then(function (html) {
+                        d.getElementById("root").innerHTML = html;
+                        import("../ventas/ventas.js")
+                                .then(obj => {
+                                    vm = obj;
+                                    vm.inicializar("menu");
+                                });
+                    });
 
+            break;
     }
 }
-
 function logout()
 {
     let empleado = w.localStorage.getItem("usuario")
-    
+
     let usuario = new Object()
-    
+
     usuario = JSON.parse(empleado)
-    
+
     let datos = {empleado: JSON.stringify(usuario)}
-    
+
     let params = new URLSearchParams(datos)
-    
-    fetch("../servicio/empleado/out" , 
-    {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-        },
-        body: params
-    })
-            .then(data =>{
-                if (data.ok){
+
+    fetch("../servicio/empleado/out",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                },
+                body: params
+            })
+            .then(data => {
+                if (data.ok) {
                     w.location.replace("../")
                     w.localStorage.removeItem("usuario")
                     w.localStorage.removeItem("isLogin")
                     w.localStorage.removeItem("empleado");
                 }
-    })
+            })
 }
 
 

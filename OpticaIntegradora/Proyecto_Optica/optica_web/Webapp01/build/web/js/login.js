@@ -42,7 +42,8 @@ function login()
 
                 w.localStorage.setItem("usuario", JSON.stringify(data));
                 w.localStorage.setItem("lastToken", data.usuario.lastToken);
-
+                w.localStorage.setItem("Empleado", JSON.stringify(data));
+                
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
