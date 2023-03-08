@@ -68,9 +68,11 @@ public class RESTVentas {
         ControllerVentasProducto cv = new ControllerVentasProducto();
         
         DetalleVentaProducto venta = gson.fromJson(jsonVenta, DetalleVentaProducto.class);
+       
+        System.out.println(jsonVenta);
+        
         
         boolean result = cv.generarVenta(venta);
-        
         System.out.println(result);
         
         return Response.status(Response.Status.OK).entity(out).build();
