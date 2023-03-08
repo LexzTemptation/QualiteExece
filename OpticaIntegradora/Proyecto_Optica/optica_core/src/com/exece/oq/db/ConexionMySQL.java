@@ -11,9 +11,11 @@ public class ConexionMySQL {
     Connection conn;
     
     public Connection open() throws ClassNotFoundException, SQLException{
-        //aquí cambié el user y password para acceder con mi base de datos
-        String user = "root";
-        String password = "root";
+        //Dario: aquí cambié el user y password para acceder con mi base de datos
+        /*Ale: Hagan un usuario con las caracteristicas en este archivo para que no
+               la estemos cambiando a cada rato que subamos cambios al repo */
+        String user = "exece";
+        String password = "";
         String url = "jdbc:mysql://localhost:3306/optiqalumnos?" + 
                      "useSSL=false&" +
                      "allowPublicKeyRetrieveal=true&" +
