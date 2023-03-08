@@ -1,0 +1,16 @@
+127.0.0.1 - - [15/Sep/2022:13:53:00 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - - [15/Sep/2022:13:53:00 -0500] "GET /manager/text/ HTTP/1.1" 401 2562
+127.0.0.1 - admin [15/Sep/2022:13:53:03 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [15/Sep/2022:13:53:03 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - admin [15/Sep/2022:13:53:03 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [15/Sep/2022:13:53:03 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - admin [15/Sep/2022:13:53:03 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [15/Sep/2022:13:53:03 -0500] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - admin [15/Sep/2022:13:53:03 -0500] "GET /manager/text/ HTTP/1.1" 200 44
+127.0.0.1 - - [15/Sep/2022:13:53:03 -0500] "GET /manager/text/list HTTP/1.1" 401 2562
+127.0.0.1 - admin [15/Sep/2022:13:53:03 -0500] "GET /manager/text/list HTTP/1.1" 200 366
+127.0.0.1 - - [15/Sep/2022:13:53:03 -0500] "GET /manager/text/list HTTP/1.1" 401 2562
+127.0.0.1 - admin [15/Sep/2022:13:53:03 -0500] "GET /manager/text/list HTTP/1.1" 200 366
+127.0.0.1 - - [15/Sep/2022:13:53:05 -0500] "GET /holarest HTTP/1.1" 302 -
+127.0.0.1 - - [15/Sep/2022:13:53:06 -0500] "GET /holarest/ HTTP/1.1" 304 -
+127.0.0.1 - - [15/Sep/2022:13:53:22 -0500] "GET /holarest/api/saludo/saludar HTTP/1.1" 200 29
