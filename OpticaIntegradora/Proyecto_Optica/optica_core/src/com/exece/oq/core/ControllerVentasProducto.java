@@ -19,8 +19,6 @@ public class ControllerVentasProducto {
 
     public boolean generarVenta(DetalleVentaProducto dvp) throws ClassNotFoundException, SQLException {
 
-        String sql = "INSERT INTO venta VALUES(NULL, ?, ?)";
-        Statement stmt = null;
 
         boolean result = false;
 
@@ -28,20 +26,17 @@ public class ControllerVentasProducto {
         Connection con = conexionMySQL.open();
 
         try {
-            
             con.setAutoCommit(false);
             
-            stmt = con.createStatement();
-
+            String sql = "INSERT INTO venta VALUES(NULL, ?, CONCAT('V00', UNIX_TIMESTAMP()))";
             PreparedStatement pstmt = con.prepareStatement(sql);
-
             pstmt.setInt(1, dvp.getVenta().getEmpleado().getIdEmpleado());
-            pstmt.setString(2, dvp.getVenta().getClave());
+            //pstmt.setString(2, dvp.getVenta().getClave());
 
-            pstmt.executeUpdate();
+            pstmt.execute();
 
             String sql2 = "SELECT LAST_INSERT_ID()";
-
+            Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql2);
 
             if (rs.next()) {
@@ -63,12 +58,13 @@ public class ControllerVentasProducto {
 
                 pstmt2.executeUpdate();
 
+                int exis = dvp.getProductos().get(i).getCantidad();
                 String sql4 = "UPDATE producto SET existencias = existencias - ? WHERE idProducto = ?";
                 PreparedStatement pstmt4 = con.prepareStatement(sql4);
-                pstmt4.setInt(1, dvp.getProductos().get(i).getCantidad());
-                pstmt4.setInt(2, currentProducto.getIdProducto());
+                pstmt4.setInt(1, exis);
+                pstmt4.setInt(2, dvp.getProductos().get(i).getProducto().getIdProducto());
                 
-                pstmt.executeUpdate();
+                pstmt4.executeUpdate();
             }
 
             con.commit();

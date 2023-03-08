@@ -2,6 +2,7 @@ const d = document;
 const w = window;
 let listaDetalleProducto = [];
 let productoRec = [];
+let grandTotal = 0;
 let cntTblVenta = "";
 let i = 0;
 let productos = [];
@@ -73,6 +74,7 @@ type="number" style="width: 90%"></td>
             idsProductos.push(producto.idProducto);
 
             d.getElementById("tbodyRealVenta").innerHTML = cntTblVenta;
+            setGrandTotal();
         }
     });
 }
@@ -98,19 +100,17 @@ export function realizarVenta() {
     });
     let jsonEmpleado = w.localStorage.getItem("Empleado");
     let objEmpleado = JSON.parse(jsonEmpleado);
-    let clave = new Date().toLocaleTimeString() + "" + Math.random();
     let detalleVentaProducto = {
         venta: {
             idVenta: 0,
             empleado: objEmpleado,
-            clave: clave
+            clave: 0
         },
         productos: productos
     };
     let datos = {
         datosVenta: JSON.stringify(detalleVentaProducto)
     };
-    console.log(detalleVentaProducto);
 
     let params = new URLSearchParams(datos);
 
@@ -121,8 +121,30 @@ export function realizarVenta() {
         },
         body: params
     }).then(res => {
-        console.log(res);
+        cntTblVenta = "";
+        d.getElementById("tbodyRealVenta").innerHTML = cntTblVenta;
+        d.getElementById("lblTotal").innerHTML = grandTotal;
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+        Toast.fire({
+            icon: 'success',
+            title: '¡Venta realizada! $' + grandTotal
+        });
+        buscar();
+        
+        grandTotal = 0;
     });
+    
 }
 
 export function calcularTotal(idProd) {
@@ -152,7 +174,7 @@ export function setGrandTotal() {
     productoRec.map(data => {
         let producto = data;
         let idTota = "tot-" + producto.nombre;
-        grandTotal += parseInt(d.getElementById(idTota).value, 10);
+        grandTotal += parseFloat(d.getElementById(idTota).value, 10);
         console.log(grandTotal);
         d.getElementById("lblTotal").innerHTML = grandTotal;
     });
