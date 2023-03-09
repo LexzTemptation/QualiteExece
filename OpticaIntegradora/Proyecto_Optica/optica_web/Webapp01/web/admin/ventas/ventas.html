@@ -2,24 +2,10 @@
     <div class="container-menu w-100 h-100" style="background-color: rgba(0, 0, 0, 0.454); z-index: 1">
         <div class="d-flex justify-content-round position-absolute z-index-1" style="top: 15%; left: 12%;">
             <div class="row">
-                <div class="d-flex flex-column align-items-center col-5">
-                    <button onClick="vm.realizarVenta()" class="btn btn-success">Realizar compra</button>
-                    <table class="table " id="tblRealVenta">
-                        <thead style="background-color: #5ba0f8; color: white">
-                                <th>codigo de barras</th>
-                                <th>nombre</th>
-                                <th>precio venta</th>
-                                <th>Cantidad</th>
-                                <th>Descuento %</th>
-                                <th>Total<br><label id="lblTotal">0</label></th>
-                        </thead>
-                        <tbody id="tbodyRealVenta" class="bg-light">
-                            
-                        </tbody>
-                    </table>
-                </div>
-                <div class="d-flex flex-column align-items-center col-5">
-                    <input id="txtBuscarProd" class="m-5 search" name="name" placeholder="Buscar"/>
+                <div class="d-flex flex-column align-items-center col-10">
+                    <div class="col-5">
+                        <input id="txtBuscarProd" class="form-control m-3 search" name="name" placeholder="Buscar"/>
+                    </div>
                     <table class="table position-relative"  id="tblVentas">
                         <thead style="background-color: #5ba0f8; color: white">
                             <tr>
@@ -34,6 +20,22 @@
                             </tr>
                         </thead>
                         <tbody class="bg-light" id="tbodyVentas">
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex flex-column align-items-center col-10">
+                    <button onClick="vm.realizarVenta()" class="btn btn-success">Realizar compra</button>
+                    <table class="table " id="tblRealVenta">
+                        <thead style="background-color: #5ba0f8; color: white">
+                                <th>codigo de barras</th>
+                                <th>nombre</th>
+                                <th>precio venta</th>
+                                <th>Cantidad</th>
+                                <th>Descuento %</th>
+                                <th>Total<br><label id="lblTotal">0</label></th>
+                        </thead>
+                        <tbody id="tbodyRealVenta" class="bg-light">
                             
                         </tbody>
                     </table>
