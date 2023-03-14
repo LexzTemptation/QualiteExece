@@ -3,17 +3,28 @@ package com.exece.oq.model;
 
 public class Presupuesto
 {
-    int idPresupuesto;
-    int idExamenVista;
-    String clave;
+    private int idPresupuesto;
+    private ExamenVista examenVista;
+    private String clave;
+    private PresupuestoLentes presupuestoLentes;
 
-    public Presupuesto(){}
+    public Presupuesto()
+    {
+    }
 
-    public Presupuesto(int idPresupuesto, int idExamenVista, String clave)
+    public Presupuesto(int idPresupuesto, ExamenVista examenVista, String clave, PresupuestoLentes presupuestoLentes)
     {
         this.idPresupuesto = idPresupuesto;
-        this.idExamenVista = idExamenVista;
+        this.examenVista = examenVista;
         this.clave = clave;
+        this.presupuestoLentes = presupuestoLentes;
+    }
+
+    public Presupuesto(ExamenVista examenVista, String clave, PresupuestoLentes presupuestoLentes)
+    {
+        this.examenVista = examenVista;
+        this.clave = clave;
+        this.presupuestoLentes = presupuestoLentes;
     }
 
     public int getIdPresupuesto()
@@ -26,14 +37,14 @@ public class Presupuesto
         this.idPresupuesto = idPresupuesto;
     }
 
-    public int getIdExamenVista()
+    public ExamenVista getExamenVista()
     {
-        return idExamenVista;
+        return examenVista;
     }
 
-    public void setIdExamenVista(int idExamenVista)
+    public void setExamenVista(ExamenVista examenVista)
     {
-        this.idExamenVista = idExamenVista;
+        this.examenVista = examenVista;
     }
 
     public String getClave()
@@ -45,7 +56,22 @@ public class Presupuesto
     {
         this.clave = clave;
     }
-    
-    
+
+    public PresupuestoLentes getPresupuestoLentes()
+    {
+        return presupuestoLentes;
+    }
+
+    public void setPresupuestoLentes(PresupuestoLentes presupuestoLentes)
+    {
+        this.presupuestoLentes = presupuestoLentes;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Presupuesto{" + "idPresupuesto=" + idPresupuesto + ", examenVista=" + examenVista + ", clave=" + clave + ", presupuestoLentes=" + presupuestoLentes + '}';
+    }
+
     
 }

@@ -15,8 +15,8 @@ public class ConexionMySQL {
         /*Ale: Hagan un usuario en sql server con las caracteristicas en este archivo, para que no
                la estemos cambiando a cada rato que subamos cambios al repo */
 
-        String user = "exece";
-        String password = "";
+        String user = "root";
+        String password = "root";
         String url = "jdbc:mysql://localhost:3306/optiqalumnos?" + 
                      "useSSL=false&" +
                      "allowPublicKeyRetrieveal=true&" +
