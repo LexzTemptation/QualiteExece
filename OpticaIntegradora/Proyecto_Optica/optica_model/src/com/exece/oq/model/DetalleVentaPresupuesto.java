@@ -6,14 +6,14 @@ import java.util.List;
 public class DetalleVentaPresupuesto
 {
     private Venta venta;
-    private List<VentaPresupuesto> ventaPresupuesto;
+    private List<VentaPresupuesto> lvp;
 
     public DetalleVentaPresupuesto(){}
 
-    public DetalleVentaPresupuesto(Venta venta, List<VentaPresupuesto> ventaPresupuesto)
+    public DetalleVentaPresupuesto(Venta venta, List<VentaPresupuesto> lvp)
     {
         this.venta = venta;
-        this.ventaPresupuesto = ventaPresupuesto;
+        this.lvp = lvp;
     }
 
     public Venta getVenta()
@@ -26,16 +26,21 @@ public class DetalleVentaPresupuesto
         this.venta = venta;
     }
 
-    public List<VentaPresupuesto> getVentaPresupuesto()
+    public List<VentaPresupuesto> getLvp()
     {
-        return ventaPresupuesto;
+        return lvp;
     }
 
-    public void setVentaPresupuesto(List<VentaPresupuesto> ventaPresupuesto)
+    public void setLvp(List<VentaPresupuesto> lvp)
     {
-        this.ventaPresupuesto = ventaPresupuesto;
+        this.lvp = lvp;
     }
-    
-    
+
+    @Override
+    public String toString()
+    {
+        return "DetalleVentaPresupuesto{" + "venta=" + venta + ", lvp=" + lvp + '}';
+    }
+
     
 }
