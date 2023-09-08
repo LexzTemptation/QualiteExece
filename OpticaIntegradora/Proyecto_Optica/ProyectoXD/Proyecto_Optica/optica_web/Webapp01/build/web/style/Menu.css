@@ -1,0 +1,65 @@
+.container-menu{
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    color: white;
+    position: fixed;
+    z-index: 10;
+    transition: 1s ease;
+    background-color: #343a40bb;
+}
+
+.container-menu a{
+    cursor: pointer;
+    position: relative;
+}
+
+.container-products li{
+    margin-left: 20px
+}
+
+.container-user{
+    margin-top: 50px;
+    margin-bottom: 20px
+}
+
+.container-user img{
+    width: 100px;
+}
+
+.container-user p{
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+
+.items-route img{
+    margin-right: 10px;
+    width: 22px;
+}
+
+.burger{
+    cursor: pointer;
+    top: 20px;
+    right: 0px;
+}
+
+.move{
+    left: -330px;
+}
+
+.move2{
+    left: -280px;
+}
+
+.container-image{
+    background: url("../media/img/fondo.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.mt-3{
+    cursor: pointer;
+}

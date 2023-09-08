@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Qualite</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../style/bootstrap-5.1.3-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../style/bootstrap-5.1.3-dist/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" type="text/css" href="../style/bootstrap-5.1.3-dist/css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" type="text/css" href="../style/bootstrap-5.1.3-dist/css/bootstrap-utilities.css">
+        <link rel="stylesheet" href="../style/Menu.css">
+        <link rel="stylesheet" href="./js/gft/gft.css">
+        <link rel="shortcut icon" href="../media/img/bitmap.png" />
+    </head>
+    <body style="overflow-x: hidden">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3 container-menu position-fixed z-index-2" id="menu">
+                    
+                    <span id="logout" class="position-absolute bg-danger" style="cursor: pointer">SALIR</span>
+
+                    <span class="position-absolute burger" id="burger" style="top: 30px; right: 20px; display: none"><img src="../media/img/burguer.png"/></span>
+
+                    <div class="container-user d-flex flex-column align-items-center justify-content-center">
+                        <img class="text-center" alt="imagen del usuario" src="../media/img/user.png"/>
+                        <p class="text-light" id="userName">Pedrito Sola</p>
+                    </div>
+                    <ul class="nav d-flex flex-column align-items-start justify-content-center items-route">
+                        <li>
+                            <a class="nav-link" id="clientes" onclick="cargarModulo('clientes')">
+                                <img alt="icon-menu" src="../media/img/menua.png"/>Clientes
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" id="ventas" onclick="cargarModulo('ventas')">
+                                <img alt="icon-menu" src="../media/img/menua.png"/>Ventas
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" id="empleados" onclick="cargarModulo('empleados')">
+                                <img alt="icon-menu" src="../media/img/menua.png"/>Empleados
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" id="servicioExamen">
+                                <img alt="icon-menu" src="../media/img/menua.png"/>Servicio Examen de la Vista
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" id="presupuesto" onclick="cargarModulo('presupuesto')">
+                                <img alt="icon-menu" src="../media/img/menua.png"/>Presupuesto
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" id="bitacora">
+                                <img alt="icon-menu" src="../media/img/menua.png"/>Bitacora de Compra
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" id="graduacion">
+                                <img alt="icon-menu" src="../media/img/menua.png"/>Graduacion de Lentes
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" id="pagos">
+                                <img alt="icon-menu" src="../media/img/menua.png"/>Pagos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link">
+                                <img alt="icon-menu" src="../media/img/menua.png"/>Productos
+                            </a>
+
+                            <ul class="collapse  nav flex-column ms-1 container-products" id="submenu1" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="#" class="nav-link" onclick="cargarModulo('armazon')"> <span id="armazon">Armazones</span></a>
+                                </li> <li>
+                                    <a href="#" class="nav-link" onclick="cargarModulo('accesorios')"> <span id="accesorios">Accesorios</span></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link" onclick="cargarModulo('soluciones')"> <span id="soluciones">Soluciones</span></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link" onclick="cargarModulo('lentesC')"> <span id="lentes-contacto">Lentes de Contacto</span></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link"> <span class="">Tratamientos</span></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link"> <span class="">Materiales</span></a>
+                                </li>
+
+                            </ul>
+                    </ul>
+                </div>
+                <div class="col-12 container-root" id="root" style="overflow: hidden;">
+                    <div class="container-image vw-100 vh-100" id="menu-soluciones">
+
+                        <div class="container-menu w-100 h-100" style="background-color: rgba(0, 0, 0, 0.454); z-index: 1">
+
+                            <div class="w-75 d-flex justify-content-round align-items-center position-relative z-index-1" style="top: 29%; left: 12%;">
+
+                               
+                                <img src="../media/img/bitmap.png" class="position-absolute" alt="alt" style="top: -200px; left: 200px"/>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript" src="../style/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+            <script type="text/javascript" src="../style/font_awesome_5_15_3/js/all.min.js"></script>
+            <script type="text/javascript" src="../style/sweetalert2/sweetalert2.all.min.js"></script>
+            <script type="text/javascript" src="./js/main.js"></script>
+            <script type="text/javascript" src="./js/gft/gft.js"></script>
+    </body>
+</html>

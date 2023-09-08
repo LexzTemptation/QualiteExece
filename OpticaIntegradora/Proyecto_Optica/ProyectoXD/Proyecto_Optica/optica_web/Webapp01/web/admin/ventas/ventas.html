@@ -1,0 +1,47 @@
+
+<h1 class="position-relative" style="margin: 20px; padding: 10px; left: 45%">Buscar producto</h1>
+
+<div class="position-relative" style="margin-bottom: 25px; left: 42%">
+    <input id="codigoBarras"/>
+    <button onclick="v.hacerBusqueda()" class="btn btn-dark">Buscar</button> 
+</div>
+
+<table class="table position-relative" style="width: 90vw; left: 70px;" id="tblSoluciones">
+    <thead style="background-color: #5ba0f8; color: white">
+        <tr>
+            <th>Codigo Barras</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Descuento</th>
+            <th>Accion</th>
+        </tr>
+    </thead>
+    <tbody id="tbodyVentas">
+
+    </tbody>
+</table>
+
+
+<div class="position-absolute" style="top: 60%">
+    
+    <table class="table position-relative" style="width: 90vw; left: 70px;" id="tblSoluciones">
+        <thead style="background-color: #5ba0f8; color: white">
+            <tr>
+                <th>Codigo Barras</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Descuento</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyVentasCompra">
+
+        </tbody>
+    </table>
+    
+    
+    <button class="btn btn-success position-relative" id="btnEnviar" style="left: 90%; top: 50px">Hacer compra</button>
+
+</div>

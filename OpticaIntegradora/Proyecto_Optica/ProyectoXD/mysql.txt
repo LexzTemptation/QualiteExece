@@ -1,0 +1,11 @@
+INSERT INTO tipo_mica(idTipoMica, nombre, precioCompra, precioVenta) 
+             VALUES (4, 'Progresivo', 100, 200);
+                    
+INSERT INTO material(idMaterial, nombre, precioCompra, precioVenta)
+            VALUES  (5, 'Policarbonato', 100, 290);
+            
+INSERT INTO graduacion(idGraduacion, esferaod, esferaoi, cilindrood, cilindrooi, ejeoi, ejeod, dip)
+			VALUES (1, 1.2 , 2.3, 3, 3, 2, 2, "OD-847");
+            
+INSERT INTO examen_vista(idExamenVista, clave, idEmpleado, idCliente, idGraduacion, fecha)
+			VALUES (1, 'OQ-350', 1, 1, 1, 12/05/2021);

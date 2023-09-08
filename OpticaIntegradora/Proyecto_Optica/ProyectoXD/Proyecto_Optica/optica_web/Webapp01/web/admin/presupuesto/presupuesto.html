@@ -1,0 +1,132 @@
+
+
+<h1 class="position-relative" style="margin: 20px; padding: 10px; left: 35%">Comprar Lente de Contacto</h1>
+
+
+<div style="width: 100%; margin-top: 90px " class="d-flex flex-row justify-content-around align-content-center">
+
+    <button class="btn btn-success position-absolute" style="top: 130px; right:  40px" onclick="pre.ventanaModal()">Ver mis Productos agregados</button>
+
+    <div id="first-block" style="width: 30%">
+        <div>
+
+            <p>Seleccionar Cliente</p>
+            <select id="selects-cliente" class="form-select" style="margin-bottom: 50px" onchange="pre.cargarExamenVista(this)">
+                <option>Cliente</option>
+            </select>
+        </div>
+
+        <div>
+            <p>Seleccionar Examen Vista</p>
+            <select id="selects-examenV" class="form-select" style="margin-bottom: 50px">
+                <option>Examen de la Vista</option>
+            </select>
+        </div>
+
+        <div>
+            <p>Seleccionar descuento</p>
+            <input class="form-control" id="descuento" placeholder="descuento" value="0"/>
+        </div>
+
+    </div>
+
+    <div id="second-block" style="width: 30%; margin-bottom: 50px">
+
+        <div>
+            <p>Seleccionar Mica</p>
+            <select id="selects-micas" class="form-select" style="margin-bottom: 50px">
+                <option>Mica</option>
+            </select>
+        </div>
+
+        <div>
+            <p>Seleccionar Material</p>
+            <select id="selects-materiales" class="form-select">
+            <option>Material</option>
+        </select>
+        </div>
+
+        <div class="position-absolute" style="bottom: 30px; left: 30px; width: 30%">
+            <p>Seleccionar Armazon</p>
+            <select id="selects-armazones" class="form-select">
+            <option>Armazon</option>
+        </select>
+        </div>
+
+    </div>
+
+    <div id="ter-block" style="width: 30%; margin-bottom: 50px">
+
+        <div>
+            <p>Seleccionar Altura oblea</p>
+            <input class="form-control" id="oblea" placeholder="altura oblea" style="margin-bottom: 50px"/>
+        </div>
+
+        <div>
+            <p>Seleccionar cantidad</p>
+            <input class="form-control" id="cantidad" placeholder="cantidad" value="1"/>
+        </div>
+
+        <div id="area-checkbox">
+
+        </div>
+
+    </div>
+    
+    <p class="position-absolute" style="bottom: 180px; left: 36%">Seleccionar Tratamientos</p>
+
+    <div id="area-tratamientos" class="position-absolute d-flex flex-row justify-content-around flex-wrap-reverse" style="bottom: 140px; left: 32%; width: 63%;">
+
+
+    </div>
+
+    <button onclick="pre.agregarLente()" class="btn btn-success position-absolute" style="right: 120px; bottom: 80px">Agregar</button>
+
+</div>
+
+
+
+<!-- VENTANA MODAL -->
+
+<div class="vw-100 vh-100 position-fixed top-0 start-0" id="vetanModalLentes" style="background: rgba(0, 0, 0, 0.59); display: none">
+
+    <p class="exit position-absolute bg-danger text-white exita" onclick="pre.removerVentana()">X</p>
+
+    <table class="table position-relative" style="width: 90vw; left: 90px; top: 130px" id="tb-lentes">
+        <thead style="background-color: #5ba0f8; color: white">
+            <tr>
+                <th>Cliente</th>
+                <th>Examen Vista</th>
+                <th>Descuento</th>
+                <th>Mica</th>
+                <th>Material</th>
+                <th>Armazon</th>
+                <th>Tratamientos</th>
+                <th>Altura Oblea</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyLentes">
+
+        </tbody>
+    </table>
+
+    <button class="btn btn-success position-absolute" style="top: 60px; right:  60px" onclick="pre.hacerCompra()">Hacer compra</button>
+
+    <style>
+        .exita{
+            font-size: 15px;
+            top: 20px;
+            border-radius: 50%;
+            padding: 5px;
+            right: 40px;
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            cursor: pointer
+        }
+
+    </style>
+
+</div>
